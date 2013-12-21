@@ -1,0 +1,31 @@
+{
+    "name": "jshop",
+    "version": "0.0.0",
+    "authors": [
+        "César Oliveira <cesar.o.almeida@gmail.com>"
+    ],
+    "description": "Exemplo de uma loja virtual, para a apresentação das palestras de AngularJS",
+    "keywords": [
+        "angularjs",
+        "javascript",
+        "php",
+        "ecommerce",
+        "shop"
+    ],
+    "license": "MIT",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "angular-latest": "*",
+        "angular-ui-bootstrap": "*",
+        "bootstrap": "*",
+        "font-awesome": "*",
+        "jQuery": "*",
+        "angularfire": "*"
+    }
+}
