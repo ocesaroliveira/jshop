@@ -2,10 +2,14 @@
 
 /* Controllers */
 
-angular.module('myApp.controllers', []).
-  controller('MyCtrl1', [function() {
+angular.module('myApp.controllers', ['myApp.services']).
+  	controller('ProdutosEditCtrl', [function($scope, $http, $routeParams) {
+  		$scope.init = function (idproduto) {
 
-  }])
-  .controller('MyCtrl2', [function() {
+  		};
 
-  }]);
+  		$scope.init($routeParams.id);
+  	}])
+  	.controller('ProdutosListCtrl', [function($scope, $http) {
+
+	}]);
