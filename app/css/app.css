@@ -8,6 +8,6 @@
 	width: 100%;
 }
 .produto-listagem-imagem {
-	height: 100px;
-	margin: auto;
+	max-height: 150px;
+	max-width: 150px;
 }

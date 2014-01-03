@@ -1,4 +1,4 @@
-'use strict';
+ 	'use strict';
 
 /* Controllers */
 
@@ -11,9 +11,11 @@ angular.module('myApp.controllers', ['myApp.services']).
   		function($scope, $http, $routeParams, Produto) {
 
   			$scope.idproduto = null;
+  			$scope.produto = null;
+
   			$scope.init = function (idproduto) {
   				$scope.idproduto = idproduto;
-  				Produto.view(idproduto);
+  				Produto.view(idproduto, function (data) { $scope.produto = data; });
   			};
 
   			$scope.init($routeParams.id);
@@ -21,8 +23,8 @@ angular.module('myApp.controllers', ['myApp.services']).
 	])
   	.controller('ProdutosListCtrl', [
   		'$scope',
-  		'$http',
-  		function($scope, $http) {
+  		'Produto',
+  		function($scope, Produto) {
 
 			$scope.currentPage = 1;
 			$scope.limitItems = 3;
@@ -32,16 +34,16 @@ angular.module('myApp.controllers', ['myApp.services']).
 			$scope.ordenar = 'nome';
 			$scope.ordemOrdenacao = true;
 
-	  		$scope.produtos = [
-	  			{id: 1, nome: 'Notebook HP', preco: 1000.00},
-	  			{id: 2, nome: 'Notebook Dell', preco: 2000.00},
-	  			{id: 3, nome: 'Notebook Acer', preco: 1200.00},
-	  			{id: 4, nome: 'Macbook PRO', preco: 4000.00},
-	  			{id: 5, nome: 'Notebook Positivo', preco: 800.00}
-	  		];
+	  		$scope.produtos = [];
 
 	  		$scope.ordenarPor = function(valor) {
 	  			$scope.ordenar = valor;
 	  		};
+
+	  		$scope.init = function () {
+	  			Produto.list(function (data) { $scope.produtos = data; });
+	  		};
+
+	  		$scope.init();
 		}
 	]);

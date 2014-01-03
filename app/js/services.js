@@ -10,11 +10,17 @@ angular.module('myApp.services', []).
 		'$http',
 		function($http) {
 			return {
-				view: function(id) {
-					$http.get('backend/viewProduto.php')
-					// $http.get('backend/viewProduto.php?id=' + id)
+				view: function(id, callback) {
+					$http.get('backend/viewProduto.php?id=' + id)
 						.success(function(data) {
-							console.log(data);
+							callback(data);
+						})
+				},
+
+				list: function(callback) {
+					$http.get('backend/listProduto.php')
+						.success(function(data) {
+							callback(data);
 						})
 				}
 			}

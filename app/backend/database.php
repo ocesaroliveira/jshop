@@ -67,7 +67,11 @@
         }
         $query .= ";";
         try {
-            return $db->query($query);
+            $dados = array();
+            foreach ($db->query($query) as $v) {
+                $dados[] = $v;
+            }
+            return $dados;
         } catch (Exception $e) {
             return array(
                 'code'    => $e->getCode(),

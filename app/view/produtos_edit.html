@@ -1,7 +1,7 @@
 <div ng-controller="ProdutosEditCtrl">
     <div class="row">
-    	<!-- <div class="col-md-2">
-    		<img ng-src="http://www.blogdogusmao.com.br/v1/wp-content/uploads/note.jpg" class="produto-listagem-imagem" />
+    	<div class="col-md-2">
+    		<img ng-src="{{produto.imagem_url}}" class="produto-listagem-imagem" />
     	</div>
     	<div class="col-md-9">
     		<div class="row">
@@ -16,11 +16,9 @@
 			</div>
     		<div class="row">
     			<div class="col-md-12">
-    				<!-- <p>{{produto.descricao}}</p>
-    				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pharetra aliquam eros. Nunc vestibulum rhoncus est, sed tincidunt justo pulvinar sed. Etiam sit amet condimentum nisl. Vivamus vestibulum, lacus sollicitudin mattis gravida, lacus diam molestie nibh, at sodales mauris mi sit amet sapien. In accumsan a neque at dapibus. Nunc.</p>
+    				<p>{{produto.descricao}}</p>
 				</div>
 			</div>
-    	</div> -->
-    	{{idproduto}}
+    	</div>
     </div>
 </div>

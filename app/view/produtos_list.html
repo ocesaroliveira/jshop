@@ -1,4 +1,4 @@
-<div ng-controller="ProdutosListCtrl">
+<div ng-controller="ProdutosListCtrl" id="ProdutosListCtrl">
     <div class="row">
         <div class="col-md-9">
             <div class="input-group">
@@ -22,7 +22,7 @@
     </div>
     <div class="row" ng-repeat="produto in resProdutos = (produtos | filter: busca | orderBy: ordenar:ordemOrdenacao) | startFrom: (currentPage - 1) * limitItems | limitTo: limitItems">
     	<div class="col-md-2">
-    		<img ng-src="http://www.blogdogusmao.com.br/v1/wp-content/uploads/note.jpg" class="produto-listagem-imagem" />
+    		<img ng-src="{{produto.imagem_url}}" class="produto-listagem-imagem" />
     	</div>
     	<div class="col-md-9">
     		<div class="row">
