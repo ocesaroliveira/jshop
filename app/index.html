@@ -1,18 +1,17 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" ng-app="myApp">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="">
         <title>JShop - E-commerce feito com AngularJS</title>
         <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap-theme.min.css"/>
+        <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="css/app.css"/>
     </head>
     <body>
-        <div class="navbar-wrapper">
-            <div class="container">
+        <div id="body-tag">
+            <div class="navbar-wrapper">
                 <div class="navbar navbar-inverse navbar-static-top" role="navigation">
                     <div class="container">
                         <a class="navbar-brand" href="../">JShop</a>
@@ -24,23 +23,19 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="container marketing">
-            <ul class="menu">
-                <li><a href="#/">view1</a></li>
-                <li><a href="#/edit/">view2</a></li>
-            </ul>
-            <div ng-view></div>
+            <div class="container conteudo">
+                <div ng-view></div>
+            </div>
         </div>
         <script src="lib/jQuery/dist/jquery.js"></script>
+        <script src="lib/bootstrap/js/dropdown.js"></script>
         <script src="lib/angular-latest/build/angular.js"></script>
         <script src="lib/angular-latest/build/angular-route.js"></script>
+        <script src="lib/angular-ui-bootstrap/src/pagination/pagination.js"></script>
         <script src="js/app.js"></script>
         <script src="js/services.js"></script>
         <script src="js/controllers.js"></script>
         <script src="js/filters.js"></script>
         <script src="js/directives.js"></script>
-        <script src="lib/bootstrap/js/carousel.js"></script>
-        <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
     </body>
 </html>

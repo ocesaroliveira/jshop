@@ -1,1 +1,48 @@
-<p>This is the partial for view 1.</p>
+<div ng-controller="ProdutosListCtrl">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Pesquisar" ng-model="busca">
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Ordenar <span class="caret"></span></button>
+                    <ul class="dropdown-menu pull-right">
+                        <li><a ng-click="ordenarPor('nome')">Nome</a></li>
+                        <li><a ng-click="ordenarPor('preco')">Preço</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <input type="checkbox" ng-model="ordemOrdenacao" id="ordemCrescente" />
+                <label ng-show="ordenar == 'preco'" for="ordemCrescente">Maior para o menor</label>
+                <label ng-show="ordenar == 'nome'" for="ordemCrescente">Crescente</label>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-repeat="produto in resProdutos = (produtos | filter: busca | orderBy: ordenar:ordemOrdenacao) | startFrom: (currentPage - 1) * limitItems | limitTo: limitItems">
+    	<div class="col-md-2">
+    		<img ng-src="http://www.blogdogusmao.com.br/v1/wp-content/uploads/note.jpg" class="produto-listagem-imagem" />
+    	</div>
+    	<div class="col-md-9">
+    		<div class="row">
+    			<div class="col-md-12">
+	    			<h4>{{produto.nome}}</h4>
+				</div>
+			</div>
+    		<div class="row">
+    			<div class="col-md-12">
+	    			<h5>R$ {{produto.preco}}</h5>
+				</div>
+			</div>
+    		<div class="row">
+    			<div class="col-md-12">
+    				<!-- <p>{{produto.descricao}}</p> -->
+    				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pharetra aliquam eros. Nunc vestibulum rhoncus est, sed tincidunt justo pulvinar sed. Etiam sit amet condimentum nisl. Vivamus vestibulum, lacus sollicitudin mattis gravida, lacus diam molestie nibh, at sodales mauris mi sit amet sapien. In accumsan a neque at dapibus. Nunc.</p>
+                    <a href="#/view/{{produto.id}}"><i class="fa fa-plus-circle"></i> Mais detalhes</a>
+				</div>
+			</div>
+    	</div>
+    </div>
+    <pagination boundary-links="true" total-items="resProdutos.length" page="currentPage" class="pagination-sm text-center" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" items-per-page="limitItems"></pagination>
+</div>

@@ -1,1 +1,13 @@
 /* app css stylesheet */
+#body-tag {
+	width: 1000px;
+	padding: 0px;
+	margin: auto;
+}
+.conteudo {
+	width: 100%;
+}
+.produto-listagem-imagem {
+	height: 100px;
+	margin: auto;
+}
