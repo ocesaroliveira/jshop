@@ -1,0 +1,19 @@
+<div ng-controller="UsuarioAddCtrl" id="UsuarioAddCtrl">
+    <form name="usuarioAdd" ng-submit="novoUsuario()">
+        <div class="form-group">
+            <label for="nomeInput">Nome</label>
+            <input type="text" class="form-control" id="nomeInput" ng-model="usuario.nome" required ng-minlength="3">
+        </div>
+        <div class="form-group">
+            <label for="emailInput">Email</label>
+            <input type="email" class="form-control" id="emailInput" ng-model="usuario.email" required>
+        </div>
+        <div class="form-group">
+            <label for="senhaInput">Senha</label>
+            <input type="password" class="form-control" id="senhaInput" ng-model="usuario.senha" required>
+        </div>
+        {{usuarioAdd.usuario.nome.$error.minlength}}
+        <button class="btn btn-success">Enviar</button>
+        <button class="btn btn-warning" type="reset">Limpar</button>
+    </form>
+</div>
