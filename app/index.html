@@ -29,13 +29,20 @@
         </div>
         <script src="lib/jQuery/dist/jquery.js"></script>
         <script src="lib/bootstrap/js/dropdown.js"></script>
+        <script src="lib/bootstrap/js/tooltip.js"></script>
         <script src="lib/angular-latest/build/angular.js"></script>
         <script src="lib/angular-latest/build/angular-route.js"></script>
-        <script src="lib/angular-ui-bootstrap/src/pagination/pagination.js"></script>
+        <script src="lib/angular-ui-bootstrap/dist/ui-bootstrap-0.7.0.min.js"></script>
+        <script src="lib/angular-ui-bootstrap/dist/ui-bootstrap-tpls-0.7.0.min.js"></script>
         <script src="js/app.js"></script>
         <script src="js/services.js"></script>
         <script src="js/controllers.js"></script>
         <script src="js/filters.js"></script>
         <script src="js/directives.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                $('[rel="tooltip"]').tooltip();
+            });
+        </script>
     </body>
 </html>
