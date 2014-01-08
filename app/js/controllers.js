@@ -1,49 +1,81 @@
- 	'use strict';
+'use strict';
 
 /* Controllers */
 
 angular.module('myApp.controllers', ['myApp.services']).
-  	controller('ProdutosEditCtrl', [
-  		'$scope',
-  		'$http',
-  		'$routeParams',
-  		'Produto',
-  		function($scope, $http, $routeParams, Produto) {
+    controller('ProdutosEditCtrl', [
+        '$scope',
+        '$http',
+        '$routeParams',
+        'Produto',
+        function($scope, $http, $routeParams, Produto) {
 
-  			$scope.idproduto = null;
-  			$scope.produto = null;
+            $scope.idproduto = null;
+            $scope.produto = null;
 
-  			$scope.init = function (idproduto) {
-  				$scope.idproduto = idproduto;
-  				Produto.view(idproduto, function (data) { $scope.produto = data; });
-  			};
+            $scope.init = function (idproduto) {
+                $scope.idproduto = idproduto;
+                Produto.view(idproduto, function (data) { $scope.produto = data; });
+            };
 
-  			$scope.init($routeParams.id);
-  		}
-	])
-  	.controller('ProdutosListCtrl', [
-  		'$scope',
-  		'Produto',
-  		function($scope, Produto) {
+            $scope.init($routeParams.id);
+        }
+    ])
+    .controller('ProdutosListCtrl', [
+        '$scope',
+        'Produto',
+        function($scope, Produto) {
 
-			$scope.currentPage = 1;
-			$scope.limitItems = 3;
+            $scope.currentPage = 1;
+            $scope.limitItems = 3;
 
-			// Dados para filtragem
-			$scope.busca = '';
-			$scope.ordenar = 'nome';
-			$scope.ordemOrdenacao = true;
+            // Dados para filtragem
+            $scope.busca = '';
+            $scope.ordenar = 'nome';
+            $scope.ordemOrdenacao = true;
 
-	  		$scope.produtos = [];
+            $scope.produtos = [];
 
-	  		$scope.ordenarPor = function(valor) {
-	  			$scope.ordenar = valor;
-	  		};
+            $scope.ordenarPor = function(valor) {
+                $scope.ordenar = valor;
+            };
 
-	  		$scope.init = function () {
-	  			Produto.list(function (data) { $scope.produtos = data; });
-	  		};
+            $scope.init = function () {
+                Produto.list(function (data) { $scope.produtos = data; });
+            };
 
-	  		$scope.init();
-		}
-	]);
+            $scope.init();
+        }
+    ])
+    .controller('UsuarioAddCtrl', [
+        '$scope',
+        '$location',
+        'Usuario',
+        function($scope, $location, Usuario) {
+            $scope.usuario = null;
+
+            $scope.enviarUsuario = function() {
+                Usuario.add($scope.usuario, function(data) {
+                    if (data.status) {
+                        alert('Usuario cadastrado com sucesso!');
+                        $location.path('/');
+                    }
+                });
+            };
+        }
+    ])
+    .controller('UsuarioLoginCtrl', [
+        '$scope',
+        'Usuario',
+        function($scope, Usuario) {
+            $scope.usuario = null;
+
+            $scope.login = function() {
+                Usuario.login($scope.usuario, function(data) {
+                    if (data.status) {
+                        $location.path('/');
+                    }
+                });
+            };
+        }
+    ]);
