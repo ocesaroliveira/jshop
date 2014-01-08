@@ -1,6 +1,5 @@
 <div ng-controller="UsuarioAddCtrl" id="UsuarioAddCtrl">
     <form name="usuarioAdd" ng-submit="enviarUsuario()" novalidate>
-        <label>{{usuarioAdd.senhaInput.$error}}</label>
         <div class="form-group">
             <label for="nomeInput">Nome</label>
             <input type="text" class="form-control" id="nomeInput" name="nomeInput" ng-model="usuario.nome" required>
