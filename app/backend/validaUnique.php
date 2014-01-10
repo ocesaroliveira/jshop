@@ -1,6 +1,6 @@
 <?php
-	require_once('bootstrap.php');
-	require_once('database.php');
+	require_once('core/bootstrap.php');
+	require_once('core/database.php');
 	define('TABLE', 0);
 	define('FIELD', 1);
 	$db = conect();

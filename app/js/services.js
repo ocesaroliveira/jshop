@@ -28,13 +28,23 @@ angular.module('myApp.services', [])
 	])
 	.service('Usuario', [
 		'$http',
-		function($http) {
+		'$rootScope',
+		function($http, $rootScope) {
 			return {
 				add: function(usuario, callback) {
 					$http.post('backend/addUsuario.php', usuario)
 						.success(function(data) {
 							callback(data);
 						});
+				},
+				login: function(usuario, callback) {
+					$http.post('backend/login.php', usuario)
+						.success(function(data) {
+							callback(data);
+						});
+				},
+				isLogged: function() {
+					return $rootScope.isLogged;
 				}
 			};
 		}

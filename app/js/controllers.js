@@ -66,16 +66,21 @@ angular.module('myApp.controllers', ['myApp.services']).
     ])
     .controller('UsuarioLoginCtrl', [
         '$scope',
+        '$rootScope',
         'Usuario',
-        function($scope, Usuario) {
+        function($scope, $rootScope, Usuario) {
             $scope.usuario = null;
 
             $scope.login = function() {
                 Usuario.login($scope.usuario, function(data) {
                     if (data.status) {
+                        $rootScope.isLogged = true;
                         $location.path('/');
                     }
                 });
             };
         }
-    ]);
+    ])
+    .run(function($rootScope) {
+        $rootScope.isLogged = false;
+    });

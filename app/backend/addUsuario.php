@@ -1,6 +1,6 @@
 <?php
-	require_once('bootstrap.php');
-	require_once('database.php');
+	require_once('core/bootstrap.php');
+	require_once('core/database.php');
 	$db = conect();
 	if (is_object($db)) {
 		$usuario = json_decode(file_get_contents("php://input"), true);

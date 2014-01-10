@@ -1,6 +1,6 @@
 <?php
-	require_once('bootstrap.php');
-	require_once('database.php');
+	require_once('core/bootstrap.php');
+	require_once('core/database.php');
 	$db = conect();
 	if (is_object($db)) {
 		$id = (int) $_GET['id'];

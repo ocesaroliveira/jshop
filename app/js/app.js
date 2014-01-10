@@ -13,6 +13,7 @@ angular.module('myApp', [
 	.config(['$routeProvider', function($routeProvider) {
 		$routeProvider.when('/', {templateUrl: 'view/produtos_list.html', controller: 'ProdutosListCtrl'});
 		$routeProvider.when('/cadastro', {templateUrl: 'view/usuarios_add.html', controller: 'UsuarioAddCtrl'});
+		$routeProvider.when('/login', {templateUrl: 'view/usuarios_login.html', controller: 'UsuarioLoginCtrl'});
 		$routeProvider.when('/view/:id', {templateUrl: 'view/produtos_edit.html', controller: 'ProdutosEditCtrl'});
 		$routeProvider.otherwise({redirectTo: '/'});
 	}]);
