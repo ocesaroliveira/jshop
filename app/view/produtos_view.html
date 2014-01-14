@@ -1,4 +1,4 @@
-<div ng-controller="ProdutosEditCtrl">
+<div ng-controller="ProdutosViewCtrl">
     <div class="row">
     	<div class="col-md-2">
     		<img ng-src="{{produto.imagem_url}}" class="produto-listagem-imagem" />
@@ -19,6 +19,11 @@
     				<p>{{produto.descricao}}</p>
 				</div>
 			</div>
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="#/buy/{{produto.id}}"><i class="fa fa-shopping-cart"></i> Comprar</a>
+                </div>
+            </div>
     	</div>
     </div>
 </div>
