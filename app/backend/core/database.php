@@ -63,7 +63,9 @@
                 } else {
                     $query .= " = '{$condition}'";
                 }
+                $query .= ' AND ';
             }
+            $query = substr($query, 0, -5);
         }
         $query .= ";";
         try {

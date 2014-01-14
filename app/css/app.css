@@ -11,3 +11,14 @@
 	max-height: 150px;
 	max-width: 150px;
 }
+.preco-compra {
+	height: 65px;
+}
+.preco-compra label, .preco-compra button {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+}
+.preco-compra label {
+	font-size: 22px;
+}

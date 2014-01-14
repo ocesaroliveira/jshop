@@ -12,8 +12,9 @@ angular.module('myApp', [
 	])
 	.config(['$routeProvider', function($routeProvider) {
 		$routeProvider.when('/', {templateUrl: 'view/produtos_list.html', controller: 'ProdutosListCtrl'});
-		$routeProvider.when('/cadastro', {templateUrl: 'view/usuarios_add.html', controller: 'UsuarioAddCtrl'});
-		$routeProvider.when('/login', {templateUrl: 'view/usuarios_login.html', controller: 'UsuarioLoginCtrl'});
-		$routeProvider.when('/view/:id', {templateUrl: 'view/produtos_edit.html', controller: 'ProdutosEditCtrl'});
+		$routeProvider.when('/cadastro', {templateUrl: 'view/usuarios_add.html', controller: 'UsuariosAddCtrl'});
+		$routeProvider.when('/login/:id', {templateUrl: 'view/usuarios_login.html', controller: 'UsuariosLoginCtrl'});
+		$routeProvider.when('/view/:id', {templateUrl: 'view/produtos_view.html', controller: 'ProdutosViewCtrl'});
+		$routeProvider.when('/buy/:id', {templateUrl: 'view/produtos_buy.html', controller: 'ProdutosBuyCtrl'});
 		$routeProvider.otherwise({redirectTo: '/'});
 	}]);

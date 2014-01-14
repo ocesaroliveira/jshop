@@ -14,8 +14,6 @@
 				'imagem_url' => $produto['imagem_url']
 			);
 		}
-	} else {
-		die("<h1> Não foi possível conectar-se com o banco de dados</h1><h2>#{$db['code']}: {$db['message']}</h2>");
 	}
 
 	echo json_encode($_produtos);
