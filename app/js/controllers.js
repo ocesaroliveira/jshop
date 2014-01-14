@@ -3,7 +3,7 @@
 /* Controllers */
 
 angular.module('myApp.controllers', ['myApp.services']).
-    controller('ProdutosEditCtrl', [
+    controller('ProdutosViewCtrl', [
         '$scope',
         '$http',
         '$routeParams',
@@ -47,7 +47,7 @@ angular.module('myApp.controllers', ['myApp.services']).
             $scope.init();
         }
     ])
-    .controller('UsuarioAddCtrl', [
+    .controller('UsuariosAddCtrl', [
         '$scope',
         '$location',
         'Usuario',
@@ -64,21 +64,73 @@ angular.module('myApp.controllers', ['myApp.services']).
             };
         }
     ])
-    .controller('UsuarioLoginCtrl', [
+    .controller('UsuariosLoginCtrl', [
         '$scope',
         '$rootScope',
+        '$routeParams',
+        '$location',
         'Usuario',
-        function($scope, $rootScope, Usuario) {
-            $scope.usuario = null;
+        function($scope, $rootScope, $routeParams, $location, Usuario) {
+
+            $scope.usuario   = null;
+            $scope.idproduto = null;
+
+            $scope.init = function() {
+                if (typeof $routeParams.id != 'undefined') {
+                    $scope.idproduto = $routeParams.id;
+                }
+            }
 
             $scope.login = function() {
                 Usuario.login($scope.usuario, function(data) {
                     if (data.status) {
                         $rootScope.isLogged = true;
-                        $location.path('/');
+                        $rootScope.idUserLogged = data.idusuario;
+                        if ($scope.idproduto != null) {
+                            $location.path('/buy/' + $scope.idproduto);
+                        } else {
+                            $location.path('/');
+                        }
                     }
                 });
             };
+
+            $scope.init();
+        }
+    ])
+    .controller('ProdutosBuyCtrl', [
+        '$scope',
+        '$rootScope',
+        '$routeParams',
+        '$location',
+        'Usuario',
+        'Produto',
+        function($scope, $rootScope, $routeParams, $location, Usuario, Produto) {
+
+            $scope.produto   = null;
+            $scope.idproduto = null;
+            $scope.quantidade = 1;
+
+            $scope.init = function(idproduto) {
+                $scope.idproduto = idproduto;
+                if (Usuario.isLogged()) {
+                    Produto.view(idproduto, function (data) { $scope.produto = data; });
+                } else {
+                    alert('Você deverá se logar antes para comprar um produto');
+                    $location.path('/login/' + idproduto);
+                }
+            };
+
+            $scope.comprar = function() {
+                var dados = {
+                    idproduto: $scope.idproduto,
+                    quantidade: $scope.quantidade,
+                    idusuario: $rootScope.idUserLogged
+                };
+                Produto.adicionarCarrinho(dados);
+            };
+
+            $scope.init($routeParams.id);
         }
     ])
     .run(function($rootScope) {
