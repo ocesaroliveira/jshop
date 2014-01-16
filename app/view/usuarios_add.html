@@ -1,13 +1,13 @@
 <div ng-controller="UsuariosAddCtrl" id="UsuariosAddCtrl">
-    <form name="usuarioAdd" ng-submit="enviarUsuario()" novalidate>
+    <form name="usuarioAdd" ng-submit="enviarUsuario()" autocomplete="off">
         <div class="form-group">
             <label for="nomeInput">Nome</label>
             <input type="text" class="form-control" id="nomeInput" name="nomeInput" ng-model="usuario.nome" required>
         </div>
         <div class="form-group">
             <label for="emailInput">Email</label>
-            <input type="email" class="form-control" id="emailInput" name="emailInput" ng-model="usuario.email" required ng-unique="usuario.email">
-            <label ng-if="usuarioAdd.emailInput.$error.unique">E-mail já cadastrado</label>
+            <input type="email" class="form-control" id="emailInput" name="emailInput" ng-model="usuario.email" ng-unique="usuario.email" required>
+            <label ng-show="usuarioAdd.emailInput.$error.unique && usuario.email == ''">E-mail já cadastrado</label>
         </div>
         <div class="form-group">
             <label for="senhaInput">Senha</label>

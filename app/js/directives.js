@@ -35,12 +35,14 @@ angular.module('myApp.directives', [])
                 restrict: 'A',
                 require: 'ngModel',
                 link: function(scope, elm, attrs, ctrl) {
-                    ctrl.$parsers.unshift(function(value) {
-                        var url = 'backend/validaUnique.php?v=' + value + '&f=' + attrs.ngUnique;
-                        $http.get(url)
-                            .success(function(data) {
-                                ctrl.$setValidity('unique', data.status);
-                            });
+                    elm.on('blur', function(evt) {
+                        // scope.$apply(function() {
+                            var url = 'backend/validaUnique.php?v=' + evt.target.value + '&f=' + attrs.ngUnique;
+                            $http.get(url)
+                                .success(function(data) {
+                                    ctrl.$setValidity('unique', data.status);
+                                });
+                        // });
                     });
                 }
             }

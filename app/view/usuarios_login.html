@@ -1,6 +1,6 @@
 <div ng-controller="UsuariosLoginCtrl" id="UsuariosLoginCtrl">
     <h1>Login</h1>
-    <form name="usuarioAdd" ng-submit="login()" novalidate>
+    <form name="usuarioAdd" ng-submit="login()" novalidate autocomplete="off">
         <div class="form-group">
             <label for="emailInput">Email</label>
             <input type="email" class="form-control" id="emailInput" name="emailInput" ng-model="usuario.email" required>
