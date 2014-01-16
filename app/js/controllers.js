@@ -58,7 +58,7 @@ angular.module('myApp.controllers', ['myApp.services']).
                 Usuario.add($scope.usuario, function(data) {
                     if (data.status) {
                         alert('Usuario cadastrado com sucesso!');
-                        $location.path('/');
+                        $location.path('/login');
                     }
                 });
             };
@@ -84,8 +84,6 @@ angular.module('myApp.controllers', ['myApp.services']).
             $scope.login = function() {
                 Usuario.login($scope.usuario, function(data) {
                     if (data.status) {
-                        $rootScope.isLogged = true;
-                        $rootScope.idUserLogged = data.idusuario;
                         if ($scope.idproduto != null) {
                             $location.path('/buy/' + $scope.idproduto);
                         } else {
@@ -98,6 +96,15 @@ angular.module('myApp.controllers', ['myApp.services']).
             $scope.init();
         }
     ])
+    .controller('UsuariosLogoutCtrl', [
+        '$location',
+        'Usuario',
+        function($location, Usuario) {
+            Usuario.logout(function() {
+                $location.path('/login');
+            });
+        }
+    ])
     .controller('ProdutosBuyCtrl', [
         '$scope',
         '$rootScope',
@@ -107,8 +114,8 @@ angular.module('myApp.controllers', ['myApp.services']).
         'Produto',
         function($scope, $rootScope, $routeParams, $location, Usuario, Produto) {
 
-            $scope.produto   = null;
-            $scope.idproduto = null;
+            $scope.produto    = null;
+            $scope.idproduto  = null;
             $scope.quantidade = 1;
 
             $scope.init = function(idproduto) {
@@ -118,14 +125,15 @@ angular.module('myApp.controllers', ['myApp.services']).
                 } else {
                     alert('Você deverá se logar antes para comprar um produto');
                     $location.path('/login/' + idproduto);
+                    return false;
                 }
             };
 
             $scope.comprar = function() {
                 var dados = {
-                    idproduto: $scope.idproduto,
-                    quantidade: $scope.quantidade,
-                    idusuario: $rootScope.idUserLogged
+                    idproduto:  $scope.idproduto,
+                    idusuario:  $rootScope.idUserLogged,
+                    quantidade: $scope.quantidade
                 };
                 Produto.adicionarCarrinho(dados);
             };
@@ -133,6 +141,9 @@ angular.module('myApp.controllers', ['myApp.services']).
             $scope.init($routeParams.id);
         }
     ])
-    .run(function($rootScope) {
-        $rootScope.isLogged = false;
-    });
+    .run([
+        'Usuario',
+        function(Usuario) {
+            Usuario.isLogged();
+        }
+    ]);
