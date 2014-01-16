@@ -21,11 +21,12 @@
         "tests"
     ],
     "dependencies": {
-        "angular-latest": "*",
-        "angular-ui-bootstrap": "*",
-        "bootstrap": "*",
-        "font-awesome": "*",
+        "async": "*",
         "jQuery": "*",
-        "angularfire": "*"
+        "bootstrap": "*",
+        "angularfire": "*",
+        "font-awesome": "*",
+        "angular-latest": "*",
+        "angular-ui-bootstrap": "*"
     }
 }
